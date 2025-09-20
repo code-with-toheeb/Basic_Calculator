@@ -4,6 +4,8 @@ const reset = document.querySelector(".reset");
 const operatorHandler = document.querySelectorAll(".operator");
 const calculate = document.querySelector(".calculate");
 const del = document.querySelector('.delete');
+const decimal = document.querySelector(".decimal");
+
 
 let previousNumber = "";
 let currentNumber = "";
@@ -76,12 +78,20 @@ displayButtons.forEach((button) => {
 
 		if (operator.length == 0)
 		{
+			if (button.value == '.' && previousNumber.includes('.'))
+			{
+				return;
+			}
 			screen.value += button.value;
 			previousNumber += button.value;
 		}
 
 		if (operator.length == 1)
 		{
+			if (button.value == '.' && currentNumber.includes('.'))
+			{
+				return;
+			}
 			currentNumber += button.value;
 			screen.value = currentNumber;
 		}
