@@ -86,7 +86,7 @@ displayButtons.forEach((button) => {
 			previousNumber += button.value;
 		}
 
-		if (operator.length == 1)
+		else if (operator.length == 1)
 		{
 			if (button.value == '.' && currentNumber.includes('.'))
 			{
@@ -95,8 +95,8 @@ displayButtons.forEach((button) => {
 			currentNumber += button.value;
 			screen.value = currentNumber;
 		}
-
-			
+		
+		
 
 	})
 } )
@@ -134,6 +134,13 @@ del.addEventListener("click", () => {
 		screen.value == "0";
 	}
 
+	if ((screen.value).length >= 1)
+	{
+		previousNumber = (screen.value).slice(0, (screen.value).length);
+		screen.value = previousNumber;
+		
+	}
+
 	if (previousNumber.length == 1 && operator.length == 0 && currentNumber.length == 0)
 	{
 		previousNumber = "0";
@@ -157,6 +164,8 @@ del.addEventListener("click", () => {
 		currentNumber = currentNumber.slice(0, currentNumber.length - 1);
 		screen.value = currentNumber;
 
-	}
+	} 
+
+
 
 })
