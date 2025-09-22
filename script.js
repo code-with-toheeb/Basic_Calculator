@@ -41,7 +41,16 @@ function operate(previousNumber, currentNumber, operator)
 
 	if (!operator)
 	{
-		return undefined;
+		if (previousNumber.length >= 1)
+		{
+			return previousNumber;
+		}
+
+		else
+		{
+			return screen.value
+		}
+		
 	}
 	if (operator === "+")
 	{
@@ -120,7 +129,14 @@ reset.addEventListener("click", () => {
 })
 
 calculate.addEventListener("click", () => {
+
+	if (previousNumber.length == 0)
+	{
+		previousNumber = "0";
+	}
+	
 	display = operate(previousNumber, currentNumber, operator);
+	
 	previousNumber = display;
 	currentNumber = "";
 	operator = "";
